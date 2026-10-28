@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loading</title>
+<style>
+    body {
+        background-color: antiquewhite;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        
+        /* Flexbox styling to center everything */
+        display: flex;
+        flex-direction: column;   /* Stacks the buttons vertically */
+        align-items: center;       /* Centers them horizontally */
+        justify-content: center;   /* Centers them vertically on the screen */
+        min-height: 100vh;         /* Makes the body take up the full screen height */
+        margin: 0;
+        gap: 15px;                 /* Adds clean spacing between each button */
+    }
+    
+    .button-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        text-align: center;
+        min-width: 250px;          /* Optional: Gives buttons an even width for a cleaner look */
+    }
+</style>
+</head>
+<body>
+
+    <!-- Removed the invalid align attribute -->
+    <a href="#" class="button-link">Are you sure to delete your feelings?</a>
+    <a href="loading.html" class="button-link">Yes</a>
+    <a href="loading.html" class="button-link">Yes</a>
+
+</body>
+</html>

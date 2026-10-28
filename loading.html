@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>wow</title>
+    <style>
+    body {
+        background-color: antiquewhite;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    .loader-container {
+        text-align: center;
+        transition: opacity 0.5s ease; /* Smooth fade out for the loader */
+    }
+
+    .loader {
+        width: 65px;
+        height: 65px;
+        border: 6px solid #334155;
+        border-top: 6px solid #38bdf8;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 25px;
+    }
+    
+    h2 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    
+    p {
+        margin-top: 12px;
+        color: #334155; /* Changed from aliceblue so it's visible on antiquewhite */
+    }
+    
+    .dots::after {
+        content: "";
+        animation: dots 1.5s steps(4, end) infinite; /* Added infinite so dots keep looping */
+    }
+    
+    @keyframes spin {
+        to {
+            transform : rotate(360deg);
+        }
+    }
+
+    @keyframes dots {
+        0% {content: "";}
+        25% {content: ".";}
+        50% {content: "..";}
+        75% {content: "...";}
+        100% {content: "";}
+    }
+    
+    /* Button initially hidden and prepared for transition */
+    .fade-button {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        padding: 12px 24px;
+        font-size: 16px;
+        background-color: #38bdf8;
+        color: #334155;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 40px auto 0;
+    }
+    
+    /* Utility class added by JS to show the element centering */
+    .show-flex {
+        display: block !important;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Wrapped everything in a wrapper to make centering easy -->
+    <div style="text-align: center; margin-top: 100px;">
+        
+        <!-- The Loader Container -->
+        <div id="loader" class="loader-container">
+            <div class="loader"></div>
+            <h2>Loading<span class="dots"></span></h2>
+            <p>Please wait...</p>
+        </div>
+
+        <!-- The Hidden Button -->
+        <button id="myButton" type="button" class="fade-button" onclick="alert('Congrats, you had deleted your feelings')">
+            Click me
+        </button>
+        
+    </div>
+
+    <script>
+        // Set the timer for how long the loading screen lasts (3000ms = 3 seconds)
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            const button = document.getElementById('myButton');
+
+            // 1. Fade out the loader
+            loader.style.opacity = '0';
+
+            // 2. Wait for loader fade animation to finish, then swap them
+            setTimeout(() => {
+                loader.style.display = 'none'; // Completely remove loader from layout
+                
+                button.classList.add('show-flex'); // Make button part of the layout
+                
+                // 3. Small delay to let display:block register, then fade button in
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                }, 50);
+                
+            }, 500); // Matches the 0.5s CSS transition of the loader
+            
+        }, 3000); 
+    </script>
+</body>
+</html>
